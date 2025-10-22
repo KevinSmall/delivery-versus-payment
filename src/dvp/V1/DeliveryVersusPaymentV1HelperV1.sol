@@ -140,9 +140,9 @@ contract DeliveryVersusPaymentV1HelperV1 {
     uint256 count = 0;
 
     while (current > 0 && count < pageSize) {
-      try dvp.getSettlement(
-        current
-      ) returns (string memory, uint256, IDeliveryVersusPaymentV1.Flow[] memory flows, bool, bool) {
+      try dvp.getSettlement(current) returns (
+        string memory, uint256, IDeliveryVersusPaymentV1.Flow[] memory flows, bool, bool
+      ) {
         bool found = false;
         uint256 lengthFlows = flows.length;
         for (uint256 i = 0; i < lengthFlows; i++) {
@@ -194,9 +194,9 @@ contract DeliveryVersusPaymentV1HelperV1 {
     uint256 count = 0;
 
     while (current > 0 && count < pageSize) {
-      try dvp.getSettlement(
-        current
-      ) returns (string memory, uint256, IDeliveryVersusPaymentV1.Flow[] memory flows, bool, bool) {
+      try dvp.getSettlement(current) returns (
+        string memory, uint256, IDeliveryVersusPaymentV1.Flow[] memory flows, bool, bool
+      ) {
         if (_matchesTokenType(flows, tokenType)) {
           temp[count] = current;
           count++;

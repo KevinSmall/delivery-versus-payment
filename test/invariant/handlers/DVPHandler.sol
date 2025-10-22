@@ -193,9 +193,9 @@ contract DVPHandler is Test {
 
   /// @dev Calculates ETH required for msg.sender to approve a settlement
   function calculateEthRequiredForMsgSender(uint256 settlementId) external view returns (uint256) {
-    try dvp.getSettlement(
-      settlementId
-    ) returns (string memory, uint256, IDeliveryVersusPaymentV1.Flow[] memory flows, bool, bool) {
+    try dvp.getSettlement(settlementId) returns (
+      string memory, uint256, IDeliveryVersusPaymentV1.Flow[] memory flows, bool, bool
+    ) {
       uint256 ethRequired = 0;
       // Sum all ETH amounts this party is sending
       for (uint256 i = 0; i < flows.length; i++) {

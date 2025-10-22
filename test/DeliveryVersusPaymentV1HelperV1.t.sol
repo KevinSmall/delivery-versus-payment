@@ -436,7 +436,9 @@ contract DeliveryVersusPaymentV1HelperV1Test is TestDvpBase {
     (uint256[] memory etherIds,) =
       dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.Ether, 0, pageSize);
 
-    assertFalse(contains(etherIds, erc20SettlementId), "ERC20-only settlement should not appear in Ether search results");
+    assertFalse(
+      contains(etherIds, erc20SettlementId), "ERC20-only settlement should not appear in Ether search results"
+    );
 
     // Similarly, create an NFT-only settlement
     IDeliveryVersusPaymentV1.Flow[] memory nftOnlyFlows = new IDeliveryVersusPaymentV1.Flow[](1);
