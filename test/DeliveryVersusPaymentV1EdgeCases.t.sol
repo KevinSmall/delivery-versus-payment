@@ -38,8 +38,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     uint256[] memory settlementIds = _getSettlementIdArray(settlementId);
     vm.prank(alice);
     vm.expectEmit(true, true, true, true);
-    emit DeliveryVersusPaymentV1
-      .SettlementExecutionFailedOther({
+    emit DeliveryVersusPaymentV1.SettlementExecutionFailedOther({
       settlementId: settlementId,
       executor: alice,
       autoExecuted: true,
@@ -48,7 +47,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     dvp.approveSettlements{value: 1 ether}(settlementIds);
 
     // Approval should have stuck
-    (bool isApproved,,,) = dvp.getSettlementPartyStatus(settlementId, alice);
+    (bool isApproved, , , ) = dvp.getSettlementPartyStatus(settlementId, alice);
     assertTrue(isApproved);
   }
 
@@ -178,7 +177,10 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     // Execution should fail due to insufficient allowance
     vm.expectRevert(
       abi.encodeWithSelector(
-        IERC20Errors.ERC20InsufficientAllowance.selector, address(dvp), 0, TOKEN_AMOUNT_SMALL_6_DECIMALS
+        IERC20Errors.ERC20InsufficientAllowance.selector,
+        address(dvp),
+        0,
+        TOKEN_AMOUNT_SMALL_6_DECIMALS
       )
     );
     dvp.executeSettlement(settlementId);
@@ -202,9 +204,8 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     // Transfer NFT away after approval
     vm.prank(alice);
     try nftCatToken.transferFrom(alice, eve, NFT_CAT_DAISY) {
-    // ERC721 reverts on failure, success expected here
-    }
-    catch {
+      // ERC721 reverts on failure, success expected here
+    } catch {
       revert("NFT transfer failed");
     }
 
@@ -269,7 +270,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     dvp.approveSettlements(settlementIds);
 
     // Settlement should be approved but not executed
-    (,,, bool isSettled,) = dvp.getSettlement(settlementId);
+    (, , , bool isSettled, ) = dvp.getSettlement(settlementId);
     assertFalse(isSettled);
     assertTrue(dvp.isSettlementApproved(settlementId));
   }
@@ -299,7 +300,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     dvp.approveSettlements(settlementIds);
 
     // Settlement should be approved but not executed
-    (,,, bool isSettled,) = dvp.getSettlement(settlementId);
+    (, , , bool isSettled, ) = dvp.getSettlement(settlementId);
     assertFalse(isSettled);
     assertTrue(dvp.isSettlementApproved(settlementId));
   }
@@ -366,7 +367,10 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     // Use setApprovalForAll instead of individual approval
     _approveAllNFTs(alice, nftCat);
 
-    (,,, DeliveryVersusPaymentV1.TokenStatus[] memory tokenStatuses) = dvp.getSettlementPartyStatus(settlementId, alice);
+    (, , , DeliveryVersusPaymentV1.TokenStatus[] memory tokenStatuses) = dvp.getSettlementPartyStatus(
+      settlementId,
+      alice
+    );
 
     assertEq(tokenStatuses.length, 1);
     assertEq(tokenStatuses[0].amountOrIdApprovedForDvp, NFT_CAT_DAISY);
@@ -396,7 +400,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     uint128 cutoff = _getFutureTimestamp(7 days);
     uint256 settlementId = dvp.createSettlement(flows, "Large Settlement", cutoff, false);
 
-    (,, IDeliveryVersusPaymentV1.Flow[] memory retrievedFlows,,) = dvp.getSettlement(settlementId);
+    (, , IDeliveryVersusPaymentV1.Flow[] memory retrievedFlows, , ) = dvp.getSettlement(settlementId);
     assertEq(retrievedFlows.length, numFlows);
   }
 
@@ -422,7 +426,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
 
     // Verify all are approved
     for (uint256 i = 0; i < numSettlements; i++) {
-      (bool isApproved,,,) = dvp.getSettlementPartyStatus(settlementIds[i], alice);
+      (bool isApproved, , , ) = dvp.getSettlementPartyStatus(settlementIds[i], alice);
       assertTrue(isApproved);
     }
   }
@@ -430,7 +434,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
   //--------------------------------------------------------------------------------
   // Zero Amount Edge Cases
   //--------------------------------------------------------------------------------
-  function test_createSettlement_WithZeroAmountERC20_Succeeds() public {
+  function test_createSettlement_WithZeroAmountERC20_Reverts() public {
     IDeliveryVersusPaymentV1.Flow[] memory flows = new IDeliveryVersusPaymentV1.Flow[](1);
     flows[0] = _createERC20Flow(alice, bob, usdc, 0);
 
@@ -439,7 +443,7 @@ contract DeliveryVersusPaymentV1EdgeCasesTest is TestDvpBase {
     dvp.createSettlement(flows, SETTLEMENT_REF, cutoff, false);
   }
 
-  function test_createSettlement_WithZeroAmountETH_Succeeds() public {
+  function test_createSettlement_WithZeroAmountETH_Reverts() public {
     IDeliveryVersusPaymentV1.Flow[] memory flows = new IDeliveryVersusPaymentV1.Flow[](1);
     flows[0] = _createETHFlow(alice, bob, 0);
 

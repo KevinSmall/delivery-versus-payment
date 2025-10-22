@@ -430,14 +430,13 @@ contract DeliveryVersusPaymentV1HelperV1Test is TestDvpBase {
       dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.NFT, 0, pageSize);
 
     // Verify that the ERC20-only settlement is NOT in the NFT results
-    bool foundERC20Settlement = false;
-    for (uint256 i = 0; i < nftIds.length; i++) {
-      if (nftIds[i] == erc20SettlementId) {
-        foundERC20Settlement = true;
-        break;
-      }
-    }
-    assertFalse(foundERC20Settlement, "ERC20-only settlement should not appear in NFT search results");
+    assertFalse(contains(nftIds, erc20SettlementId), "ERC20-only settlement should not appear in NFT search results");
+
+    // Search for Ether type - should NOT find the ERC20-only settlement
+    (uint256[] memory etherIds,) =
+      dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.Ether, 0, pageSize);
+
+    assertFalse(contains(etherIds, erc20SettlementId), "ERC20-only settlement should not appear in Ether search results");
 
     // Similarly, create an NFT-only settlement
     IDeliveryVersusPaymentV1.Flow[] memory nftOnlyFlows = new IDeliveryVersusPaymentV1.Flow[](1);
@@ -445,17 +444,16 @@ contract DeliveryVersusPaymentV1HelperV1Test is TestDvpBase {
     uint256 nftSettlementId = dvp.createSettlement(nftOnlyFlows, "NFT Only Settlement", cutoff, false);
 
     // Search for Ether type - should NOT find the NFT-only settlement
-    (uint256[] memory etherIds,) =
+    (uint256[] memory etherIds2,) =
       dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.Ether, 0, pageSize);
 
-    bool foundNFTSettlement = false;
-    for (uint256 i = 0; i < etherIds.length; i++) {
-      if (etherIds[i] == nftSettlementId) {
-        foundNFTSettlement = true;
-        break;
-      }
-    }
-    assertFalse(foundNFTSettlement, "NFT-only settlement should not appear in Ether search results");
+    assertFalse(contains(etherIds2, nftSettlementId), "NFT-only settlement should not appear in Ether search results");
+
+    // Search for ERC20 type - should NOT find the NFT-only settlement
+    (uint256[] memory erc20Ids,) =
+      dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.ERC20, 0, pageSize);
+
+    assertFalse(contains(erc20Ids, nftSettlementId), "NFT-only settlement should not appear in ERC20 search results");
   }
 
   function test_helperMethods_WithSettlementGapsDueToErrors_HandleGracefully() public {

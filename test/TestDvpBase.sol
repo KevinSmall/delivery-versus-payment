@@ -250,4 +250,14 @@ contract TestDvpBase is Test {
   function _advanceTime(uint256 secondsToMove) internal {
     vm.warp(block.timestamp + secondsToMove);
   }
+
+  // Helper to check if an array contains a specific value
+  function contains(uint256[] memory array, uint256 value) internal pure returns (bool) {
+    for (uint256 i = 0; i < array.length; i++) {
+      if (array[i] == value) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
