@@ -179,11 +179,7 @@ contract DVPHandler is Test {
     address to = actors[toIndex];
 
     return IDeliveryVersusPaymentV1.Flow({
-      token: address(0),
-      isNFT: false,
-      from: from,
-      to: to,
-      amountOrId: bound(seed, 0.1 ether, 10 ether)
+      token: address(0), isNFT: false, from: from, to: to, amountOrId: bound(seed, 0.1 ether, 10 ether)
     });
   }
 
