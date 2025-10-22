@@ -9,7 +9,7 @@ pragma solidity 0.8.30;
  * ██████╔╝░░╚██╔╝░░██║░░░░░███████╗██║░░██║██████╔╝░░░██║░░░██╗██╔╝╚██╗░░░██║░░░███████╗
  * ╚═════╝░░░░╚═╝░░░╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝
  */
-import "./IDeliveryVersusPaymentV1.sol";
+import {IDeliveryVersusPaymentV1} from "./IDeliveryVersusPaymentV1.sol";
 
 /**
  * @title DeliveryVersusPaymentV1HelperV1

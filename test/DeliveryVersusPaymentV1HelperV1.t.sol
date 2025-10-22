@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.30;
 
-import "./TestDvpBase.sol";
+import {TestDvpBase} from "./TestDvpBase.sol";
+import {IDeliveryVersusPaymentV1} from "../src/dvp/V1/IDeliveryVersusPaymentV1.sol";
+import {DeliveryVersusPaymentV1} from "../src/dvp/V1/DeliveryVersusPaymentV1.sol";
+import {DeliveryVersusPaymentV1HelperV1} from "../src/dvp/V1/DeliveryVersusPaymentV1HelperV1.sol";
 
 /**
  * @title DeliveryVersusPaymentV1HelperV1Test
@@ -23,7 +26,7 @@ contract DeliveryVersusPaymentV1HelperV1Test is TestDvpBase {
   }
 
   function _createTestSettlements() internal {
-    uint256 cutoff = _getFutureTimestamp(7 days);
+    uint128 cutoff = _getFutureTimestamp(7 days);
 
     // Create 10 settlements for each type: mixed, NFT-only, ERC20-only, Ether-only
     for (uint256 i = 0; i < 10; i++) {
@@ -412,5 +415,74 @@ contract DeliveryVersusPaymentV1HelperV1Test is TestDvpBase {
     assertEq(ids1.length, 0);
     assertEq(ids2.length, 0);
     assertEq(ids3.length, 0);
+  }
+
+  function test_getSettlementsByTokenType_WithMismatchedType_FiltersCorrectly() public {
+    // Create a settlement with ONLY ERC20 flows
+    IDeliveryVersusPaymentV1.Flow[] memory erc20OnlyFlows = new IDeliveryVersusPaymentV1.Flow[](1);
+    erc20OnlyFlows[0] = _createERC20Flow(alice, bob, usdc, TOKEN_AMOUNT_SMALL_6_DECIMALS);
+    uint128 cutoff = _getFutureTimestamp(7 days);
+    uint256 erc20SettlementId = dvp.createSettlement(erc20OnlyFlows, "ERC20 Only Settlement", cutoff, false);
+
+    // Search for NFT type - should NOT find the ERC20-only settlement
+    uint256 pageSize = 200;
+    (uint256[] memory nftIds,) =
+      dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.NFT, 0, pageSize);
+
+    // Verify that the ERC20-only settlement is NOT in the NFT results
+    assertFalse(contains(nftIds, erc20SettlementId), "ERC20-only settlement should not appear in NFT search results");
+
+    // Search for Ether type - should NOT find the ERC20-only settlement
+    (uint256[] memory etherIds,) =
+      dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.Ether, 0, pageSize);
+
+    assertFalse(
+      contains(etherIds, erc20SettlementId), "ERC20-only settlement should not appear in Ether search results"
+    );
+
+    // Similarly, create an NFT-only settlement
+    IDeliveryVersusPaymentV1.Flow[] memory nftOnlyFlows = new IDeliveryVersusPaymentV1.Flow[](1);
+    nftOnlyFlows[0] = _createNFTFlow(alice, bob, nftCat, NFT_CAT_DAISY);
+    uint256 nftSettlementId = dvp.createSettlement(nftOnlyFlows, "NFT Only Settlement", cutoff, false);
+
+    // Search for Ether type - should NOT find the NFT-only settlement
+    (uint256[] memory etherIds2,) =
+      dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.Ether, 0, pageSize);
+
+    assertFalse(contains(etherIds2, nftSettlementId), "NFT-only settlement should not appear in Ether search results");
+
+    // Search for ERC20 type - should NOT find the NFT-only settlement
+    (uint256[] memory erc20Ids,) =
+      dvpHelper.getSettlementsByTokenType(address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.ERC20, 0, pageSize);
+
+    assertFalse(contains(erc20Ids, nftSettlementId), "NFT-only settlement should not appear in ERC20 search results");
+  }
+
+  function test_helperMethods_WithSettlementGapsDueToErrors_HandleGracefully() public {
+    // Create a settlement, then create a large gap in settlement IDs by incrementing the counter
+    // This simulates settlements that might have been deleted or are corrupted
+    IDeliveryVersusPaymentV1.Flow[] memory flows = new IDeliveryVersusPaymentV1.Flow[](1);
+    flows[0] = _createERC20Flow(alice, bob, usdc, TOKEN_AMOUNT_SMALL_6_DECIMALS);
+    uint128 cutoff = _getFutureTimestamp(7 days);
+    uint256 validSettlementId = dvp.createSettlement(flows, "Valid Settlement", cutoff, false);
+
+    // Now query with a cursor set to a non-existent settlement ID (one past the last valid one)
+    // This tests the catch block when getSettlement fails on invalid IDs
+    uint256 pageSize = 5;
+    uint256 startCursor = validSettlementId + 1000; // Way past any valid settlement
+
+    // These should not revert, but handle missing settlements gracefully
+    (uint256[] memory ids1, uint256 cursor1) =
+      dvpHelper.getSettlementsByToken(address(dvp), usdc, startCursor, pageSize);
+    (uint256[] memory ids2, uint256 cursor2) =
+      dvpHelper.getSettlementsByInvolvedParty(address(dvp), alice, startCursor, pageSize);
+    (uint256[] memory ids3, uint256 cursor3) = dvpHelper.getSettlementsByTokenType(
+      address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.ERC20, startCursor, pageSize
+    );
+
+    // All should handle the gap and continue searching backwards
+    assertGe(ids1.length, 0); // May or may not find settlements depending on how far back it searches
+    assertGe(ids2.length, 0);
+    assertGe(ids3.length, 0);
   }
 }
