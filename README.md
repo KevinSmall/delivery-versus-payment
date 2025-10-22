@@ -69,8 +69,8 @@ The DVP contracts are available at the following addresses. Since the solution i
 | Avalanche   | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://snowtrace.io/address/0x6297259fB38F4871DF74C510919CF2F7F7831A49)  | `0x6297259fB38F4871DF74C510919CF2F7F7831A49` |
 | Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1](https://testnet.snowtrace.io/address/0xfDD3D731AFb3a1c4eFe18AedF750abBf2189BF9d)          | `0xfDD3D731AFb3a1c4eFe18AedF750abBf2189BF9d` |
 | Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1HelperV1](https://testnet.snowtrace.io/address/0x82aF9b22399693b7cFb4b5d827D29d7B0b52F120)  | `0x82aF9b22399693b7cFb4b5d827D29d7B0b52F120` |
-| Ethereum    | Mainnet           | DeliveryVersusPaymentV1          | `tbc`                                        |
-| Ethereum    | Mainnet           | DeliveryVersusPaymentV1HelperV1  | `tbc`                                        |
+| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1](https://etherscan.io/address/0x94D01960C2F09502a64ae83547da0828fd3fF4e3)             | `0x94D01960C2F09502a64ae83547da0828fd3fF4e3` |
+| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://etherscan.io/address/0xE1e2e50918Bf18207eE87B7618888128d19D8a44) |`0xE1e2e50918Bf18207eE87B7618888128d19D8a44` |
 | Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.etherscan.io/address/0x2A208C4a5b94A6a8E1546e892832F76a9313741b)          | `0x2A208C4a5b94A6a8E1546e892832F76a9313741b` |
 | Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.etherscan.io/address/0x53953083AC1Ad08202398951C77447F9d95B5c98)  | `0x53953083AC1Ad08202398951C77447F9d95B5c98` |
 | Polygon     | Mainnet           | [DeliveryVersusPaymentV1](https://polygonscan.com/address/0x8275709ca99574b676aDd48C32a9969017E5c69C)          | `0x8275709ca99574b676aDd48C32a9969017E5c69C` |

@@ -22,6 +22,7 @@ SUPPORTED_NETWORKS=(
   "polygon"
   "fuji"
   "avalanche"
+  "ethereum"
 )
 
 usage() {
