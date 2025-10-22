@@ -15,7 +15,7 @@ repos:
     hooks:
       - id: forge-fmt
         name: Check Solidity formatting with forge fmt (Foundry)
-        entry: bash -c 'forge fmt --check'
+        entry: bash -c 'forge fmt'
         language: system
         files: \.sol$
         pass_filenames: false
