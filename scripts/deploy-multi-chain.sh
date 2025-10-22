@@ -22,6 +22,7 @@ SUPPORTED_NETWORKS=(
   "polygon"
   "fuji"
   "avalanche"
+  "ethereum"
 )
 
 usage() {
@@ -105,6 +106,8 @@ deploy_to_network() {
     --rpc-url "$network" \
     --broadcast \
     --verify \
+    --retries 10 \
+    --delay 20 \
     --private-key "$PRIVATE_KEY"
 
   echo "Deploying DVP Helper to $network"
@@ -112,6 +115,8 @@ deploy_to_network() {
     --rpc-url "$network" \
     --broadcast \
     --verify \
+    --retries 10 \
+    --delay 20 \
     --private-key "$PRIVATE_KEY"
 }
 

@@ -63,18 +63,18 @@ The following CLI commands are available:
 The DVP contracts are available at the following addresses. Since the solution is permissionless, they can be freely used as they are, without needing further contract deployments. To deploy new contracts see [Further Deployments](#further-deployments).
 | Chain       | Instance          | Contract Block Explorer Link     | Address                                      |
 |-------------|-------------------|----------------------------------|----------------------------------------------|
-| Arbitrum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.arbiscan.io/address/0xA19B617507fef9866Fc7465933f7e3D48C7Ca03C)          | `0xA19B617507fef9866Fc7465933f7e3D48C7Ca03C` |
-| Arbitrum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.arbiscan.io/address/0x83096F52F2C20373C11ADa557FD87DA8Db2b150a)  | `0x83096F52F2C20373C11ADa557FD87DA8Db2b150a` |
-| Avalanche   | Mainnet           | [DeliveryVersusPaymentV1](https://snowtrace.io/address/0xE87c95AB6a3e11e16E72A2b6234454Bb29130C95)          | `0xE87c95AB6a3e11e16E72A2b6234454Bb29130C95` |
-| Avalanche   | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://snowtrace.io/address/0xeDFDecC5e1932dd3D99Ee87f370FA89E1901F4F9)  | `0xeDFDecC5e1932dd3D99Ee87f370FA89E1901F4F9` |
-| Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1](https://testnet.snowtrace.io/address/0xa70404d8ca272bE8bAA48A4b83ED94Db17068e05)          | `0xa70404d8ca272bE8bAA48A4b83ED94Db17068e05` |
-| Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1HelperV1](https://testnet.snowtrace.io/address/0x8DdC71B21889dd727D7aC5432799406F2901E74a)  | `0x8DdC71B21889dd727D7aC5432799406F2901E74a` |
-| Ethereum    | Mainnet           | DeliveryVersusPaymentV1          | `tbc`                                        |
-| Ethereum    | Mainnet           | DeliveryVersusPaymentV1HelperV1  | `tbc`                                        |
-| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.etherscan.io/address/0x0DB7eb1E62514625E03AdE35E60df74Fb8e4E36a)          | `0x0DB7eb1E62514625E03AdE35E60df74Fb8e4E36a` |
-| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.etherscan.io/address/0xE988E4A78DD4717C0E1f2182C257A459Fe06DF68)  | `0xE988E4A78DD4717C0E1f2182C257A459Fe06DF68` |
-| Polygon     | Mainnet           | [DeliveryVersusPaymentV1](https://polygonscan.com/address/0xFBdA0E404B429c878063b3252A2c2da14fe28e7f)          | `0xFBdA0E404B429c878063b3252A2c2da14fe28e7f` |
-| Polygon     | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://polygonscan.com/address/0x662E81BCfF1887C4F73f8086E9D0d590F85A7f1E)  | `0x662E81BCfF1887C4F73f8086E9D0d590F85A7f1E` |
+| Arbitrum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.arbiscan.io/address/0xb4bfeA02E82172E8A12F8AA41B5F729B4778F33F)          | `0xb4bfeA02E82172E8A12F8AA41B5F729B4778F33F` |
+| Arbitrum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.arbiscan.io/address/0x700A55267Dad74763b4B5f0C0B727B6a86DD58D3)  | `0x700A55267Dad74763b4B5f0C0B727B6a86DD58D3` |
+| Avalanche   | Mainnet           | [DeliveryVersusPaymentV1](https://snowtrace.io/address/0xF38a32671795Ffb2dFC7791DC10423b526679929)          | `0xF38a32671795Ffb2dFC7791DC10423b526679929` |
+| Avalanche   | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://snowtrace.io/address/0x6297259fB38F4871DF74C510919CF2F7F7831A49)  | `0x6297259fB38F4871DF74C510919CF2F7F7831A49` |
+| Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1](https://testnet.snowtrace.io/address/0xfDD3D731AFb3a1c4eFe18AedF750abBf2189BF9d)          | `0xfDD3D731AFb3a1c4eFe18AedF750abBf2189BF9d` |
+| Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1HelperV1](https://testnet.snowtrace.io/address/0x82aF9b22399693b7cFb4b5d827D29d7B0b52F120)  | `0x82aF9b22399693b7cFb4b5d827D29d7B0b52F120` |
+| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1](https://etherscan.io/address/0x94D01960C2F09502a64ae83547da0828fd3fF4e3)             | `0x94D01960C2F09502a64ae83547da0828fd3fF4e3` |
+| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://etherscan.io/address/0xE1e2e50918Bf18207eE87B7618888128d19D8a44) |`0xE1e2e50918Bf18207eE87B7618888128d19D8a44` |
+| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.etherscan.io/address/0x2A208C4a5b94A6a8E1546e892832F76a9313741b)          | `0x2A208C4a5b94A6a8E1546e892832F76a9313741b` |
+| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.etherscan.io/address/0x53953083AC1Ad08202398951C77447F9d95B5c98)  | `0x53953083AC1Ad08202398951C77447F9d95B5c98` |
+| Polygon     | Mainnet           | [DeliveryVersusPaymentV1](https://polygonscan.com/address/0x8275709ca99574b676aDd48C32a9969017E5c69C)          | `0x8275709ca99574b676aDd48C32a9969017E5c69C` |
+| Polygon     | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://polygonscan.com/address/0x5aA9B6D1F6a37F20D90DCA99f0a78c6ab8e9bD4E)  | `0x5aA9B6D1F6a37F20D90DCA99f0a78c6ab8e9bD4E` |
 
 ## Further Deployments
 ### Deploying Individual Contracts
