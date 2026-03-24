@@ -66,16 +66,16 @@ The following CLI commands are available:
 
 ## Deployed Addresses
 The DVP contracts are available at the following addresses. Since the solution is permissionless, they can be freely used as they are, without needing further contract deployments. To deploy new contracts see [Further Deployments](#further-deployments).
-| Chain       | Instance          | Contract                                                                                                                                                   | Address                                        |
-|-------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1](https://etherscan.io/address/0x04471997950Fec40AC447879Bd119054D03B91eB)                                                         | `0x04471997950Fec40AC447879Bd119054D03B91eB`   |
-| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://etherscan.io/address/0x322DbcF1496d9eFBA9c772042Ab4f7Eb47d3A1B6)                                                 | `0x322DbcF1496d9eFBA9c772042Ab4f7Eb47d3A1B6`   |
-| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.etherscan.io/address/0xb62B5750eF64cC9ed0fb0543506B70Bf2758F8e4)                                                 | `0xb62B5750eF64cC9ed0fb0543506B70Bf2758F8e4`   |
-| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.etherscan.io/address/0x2F4d5cE98bEc7914e2FcBcF0bA5E0563a473C9C9)                                         | `0x2F4d5cE98bEc7914e2FcBcF0bA5E0563a473C9C9`   |
-| Base        | Mainnet           | [DeliveryVersusPaymentV1](https://basescan.org/address/0x20Bbb97E55939b2993D2029D2A0c84740CB82B72)                                                         | `0x20Bbb97E55939b2993D2029D2A0c84740CB82B72`   |
-| Base        | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://basescan.org/address/0x1EBD03de33878fBeA9CB5511D70A0eff1de0253F)                                                 | `0x1EBD03de33878fBeA9CB5511D70A0eff1de0253F`   |
-| Base        | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.basescan.org/address/0x169C3fB119e562c186Bf143de506b09926c9132B)                                                 | `0x169C3fB119e562c186Bf143de506b09926c9132B`   |
-| Base        | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.basescan.org/address/TODO)                                                                               | `TODO`                                         ||
+| Chain    | Instance          | Contract                                                                                                                                  | Address                                      |
+|----------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| Ethereum | Mainnet           | [DeliveryVersusPaymentV1](https://etherscan.io/address/0x04471997950Fec40AC447879Bd119054D03B91eB)                                        | `0x04471997950Fec40AC447879Bd119054D03B91eB` |
+| Ethereum | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://etherscan.io/address/0x322DbcF1496d9eFBA9c772042Ab4f7Eb47d3A1B6)                                | `0x322DbcF1496d9eFBA9c772042Ab4f7Eb47d3A1B6` |
+| Ethereum | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.etherscan.io/address/0xb62B5750eF64cC9ed0fb0543506B70Bf2758F8e4)                                | `0xb62B5750eF64cC9ed0fb0543506B70Bf2758F8e4` |
+| Ethereum | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.etherscan.io/address/0x2F4d5cE98bEc7914e2FcBcF0bA5E0563a473C9C9)                        | `0x2F4d5cE98bEc7914e2FcBcF0bA5E0563a473C9C9` |
+| Base     | Mainnet           | [DeliveryVersusPaymentV1](https://basescan.org/address/0x20Bbb97E55939b2993D2029D2A0c84740CB82B72)                                        | `0x20Bbb97E55939b2993D2029D2A0c84740CB82B72` |
+| Base     | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://basescan.org/address/0x1EBD03de33878fBeA9CB5511D70A0eff1de0253F)                                | `0x1EBD03de33878fBeA9CB5511D70A0eff1de0253F` |
+| Base     | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.basescan.org/address/0x847784D537E22901DF2aC20508f534867Fa5C829)                                | `0x847784D537E22901DF2aC20508f534867Fa5C829` |
+| Base     | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.basescan.org/address/0xb1D0672888b050AcBAaA635e0Ca627747c7138d5)                        | `0xb1D0672888b050AcBAaA635e0Ca627747c7138d5` |
 
 ## Further Deployments
 ### Deploying Individual Contracts
