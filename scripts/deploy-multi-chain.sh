@@ -41,12 +41,6 @@ Supported networks:
 EOF
 }
 
-# Convert SUPPORTED_NETWORKS array to an associative set for O(1) lookup
-declare -A SUPPORTED_SET=()
-for net in "${SUPPORTED_NETWORKS[@]}"; do
-  SUPPORTED_SET["$net"]=1
-done
-
 # Parse arguments
 SELECTED_NETWORKS=()
 if [[ $# -gt 0 ]]; then
@@ -84,9 +78,11 @@ fi
 # Validate selected networks
 INVALID_NETWORKS=()
 for sel in "${SELECTED_NETWORKS[@]}"; do
-  if [[ -z "${SUPPORTED_SET[$sel]:-}" ]]; then
-    INVALID_NETWORKS+=("$sel")
-  fi
+  valid=0
+  for sup in "${SUPPORTED_NETWORKS[@]}"; do
+    [[ "$sel" == "$sup" ]] && valid=1 && break
+  done
+  [[ $valid -eq 0 ]] && INVALID_NETWORKS+=("$sel")
 done
 
 if [[ ${#INVALID_NETWORKS[@]} -gt 0 ]]; then
