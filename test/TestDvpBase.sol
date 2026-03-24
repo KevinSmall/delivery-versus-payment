@@ -244,6 +244,8 @@ contract TestDvpBase is Test {
   }
 
   function _getFutureTimestamp(uint256 secondsInFuture) internal view returns (uint128) {
+    // casting to 'uint128' is safe because block.timestamp fits in uint128 for billions of years
+    // forge-lint: disable-next-line(unsafe-typecast)
     return uint128(block.timestamp + secondsInFuture);
   }
 

@@ -472,11 +472,9 @@ contract DeliveryVersusPaymentV1HelperV1Test is TestDvpBase {
     uint256 startCursor = validSettlementId + 1000; // Way past any valid settlement
 
     // These should not revert, but handle missing settlements gracefully
-    (uint256[] memory ids1, uint256 cursor1) =
-      dvpHelper.getSettlementsByToken(address(dvp), usdc, startCursor, pageSize);
-    (uint256[] memory ids2, uint256 cursor2) =
-      dvpHelper.getSettlementsByInvolvedParty(address(dvp), alice, startCursor, pageSize);
-    (uint256[] memory ids3, uint256 cursor3) = dvpHelper.getSettlementsByTokenType(
+    (uint256[] memory ids1,) = dvpHelper.getSettlementsByToken(address(dvp), usdc, startCursor, pageSize);
+    (uint256[] memory ids2,) = dvpHelper.getSettlementsByInvolvedParty(address(dvp), alice, startCursor, pageSize);
+    (uint256[] memory ids3,) = dvpHelper.getSettlementsByTokenType(
       address(dvp), DeliveryVersusPaymentV1HelperV1.TokenType.ERC20, startCursor, pageSize
     );
 

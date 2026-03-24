@@ -2,19 +2,19 @@
 pragma solidity 0.8.30;
 
 /**
- * ██████╗░██╗░░░██╗██████╗░███████╗░█████╗░░██████╗██╗░░░██╗░░░██╗░░██╗██╗░░░██╗███████╗
- * ██╔══██╗██║░░░██║██╔══██╗██╔════╝██╔══██╗██╔════╝╚██╗░██╔╝░░░╚██╗██╔╝╚██╗░██╔╝╚════██║
- * ██║░░██║╚██╗░██╔╝██████╔╝█████╗░░███████║╚█████╗░░╚████╔╝░░░░░╚███╔╝░░╚████╔╝░░░███╔═╝
- * ██║░░██║░╚████╔╝░██╔═══╝░██╔══╝░░██╔══██║░╚═══██╗░░╚██╔╝░░░░░░██╔██╗░░░╚██╔╝░░██╔══╝░░
- * ██████╔╝░░╚██╔╝░░██║░░░░░███████╗██║░░██║██████╔╝░░░██║░░░██╗██╔╝╚██╗░░░██║░░░███████╗
- * ╚═════╝░░░░╚═╝░░░╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝
+ *       _                                        _                 _
+ *    __| |_   ___ __   ___  __ _ ___ _   _      | |_ _ __ __ _  __| | ___
+ *   / _` \ \ / / '_ \ / _ \/ _` / __| | | |     | __| '__/ _` |/ _` |/ _ \
+ *  | (_| |\ V /| |_) |  __/ (_| \__ \ |_| |  _  | |_| | | (_| | (_| |  __/
+ *   \__,_| \_/ | .__/ \___|\__,_|___/\__, | (_)  \__|_|  \__,_|\__,_|\___|
+ *              |_|                   |___/
  */
 import {IDeliveryVersusPaymentV1} from "./IDeliveryVersusPaymentV1.sol";
 
 /**
  * @title DeliveryVersusPaymentV1HelperV1
  * @dev Provides view helper functions to page through settlements using a cursor-based approach.
- * Created by https://pv0.one. UI implemented at https://dvpeasy.xyz.
+ * UI implemented at https://dvpeasy.trade.
  * It allows filtering by token address, by involved party, or by token type (Ether, ERC20, or NFT).
  * Each function accepts a DVP contract, a starting cursor and a pageSize and returns matching settlement
  * IDs along with a nextCursor (which is the settlement ID to use as the starting cursor in the next call).
@@ -26,8 +26,12 @@ contract DeliveryVersusPaymentV1HelperV1 {
   error InvalidPageSize();
 
   modifier validPageSize(uint256 pageSize) {
-    if (pageSize < 2 || pageSize > 200) revert InvalidPageSize();
+    _validPageSize(pageSize);
     _;
+  }
+
+  function _validPageSize(uint256 pageSize) internal pure {
+    if (pageSize < 2 || pageSize > 200) revert InvalidPageSize();
   }
 
   enum TokenType {
@@ -50,9 +54,9 @@ contract DeliveryVersusPaymentV1HelperV1 {
    */
   function getTokenTypes() external pure returns (TokenTypeInfo[] memory) {
     TokenTypeInfo[] memory types = new TokenTypeInfo[](3);
-    types[0] = TokenTypeInfo(uint8(TokenType.Ether), "Ether");
-    types[1] = TokenTypeInfo(uint8(TokenType.ERC20), "ERC20");
-    types[2] = TokenTypeInfo(uint8(TokenType.NFT), "NFT");
+    types[0] = TokenTypeInfo({id: uint8(TokenType.Ether), name: "Ether"});
+    types[1] = TokenTypeInfo({id: uint8(TokenType.ERC20), name: "ERC20"});
+    types[2] = TokenTypeInfo({id: uint8(TokenType.NFT), name: "NFT"});
     return types;
   }
 

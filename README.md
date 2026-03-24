@@ -1,9 +1,8 @@
 # Delivery Versus Payment <!-- omit from toc -->
 
-![Build Status](https://github.com/PV01-org/delivery-versus-payment/actions/workflows/ci.yml/badge.svg)
-![GitHub issues](https://img.shields.io/github/issues/PV01-org/delivery-versus-payment)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/PV01-org/delivery-versus-payment)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/PV01-org/delivery-versus-payment)
+![Build Status](https://github.com/KevinSmall/delivery-versus-payment/actions/workflows/ci.yml/badge.svg)
+![GitHub issues](https://img.shields.io/github/issues/KevinSmall/delivery-versus-payment)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/KevinSmall/delivery-versus-payment)
 
 - [Description](#description)
   - [Features](#features)
@@ -27,9 +26,14 @@
 - [License](#license)
 
 ## Description
-This repo is a permissionless implementation of the Delivery Versus Payment (DVP) protocol supporting ERC-20, ERC-721, and Ether transfers. Developed and actively used by [PV01](https://pv0.one), this project is open-sourced under the MIT [license](LICENSE) and provided as a public good.
+This repo is a permissionless implementation of the Delivery Versus Payment (DVP) protocol. You can use it to do multi-party atomic swaps of digital assets. It supports ERC-20, ERC-721, and Ether transfers exchanged between two or more parties. Either all parts of the settlement happen in a single transaction, or nothing happens at all.
+
+The contract suite is permissionless, non-upgradeable and has no admins or privileged accounts. Anyone can use the deployed contracts.
+
+Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment), this fork is also open-sourced under the MIT [license](LICENSE) and provided as a public good.
 
 ### Features
+ - UI available at https://dvpeasy.trade.
  - Non-upgradeable, singleton [Delivery Versus Payment contract](contracts/dvp/V1/DeliveryVersusPaymentV1.sol).
  - Allows atomic swaps of an arbitrary number of assets between an arbitrary number of parties.
  - Permissionless, anyone can create and execute these swaps, so long as involved parties have approved.
@@ -44,7 +48,7 @@ This repo is a permissionless implementation of the Delivery Versus Payment (DVP
 
 ## Installation
 ```
-git clone --recurse-submodules https://github.com/PV01-org/delivery-versus-payment.git
+git clone --recurse-submodules https://github.com/KevinSmall/delivery-versus-payment.git
 cd delivery-versus-payment
 forge build
 ```
@@ -63,18 +67,7 @@ The following CLI commands are available:
 The DVP contracts are available at the following addresses. Since the solution is permissionless, they can be freely used as they are, without needing further contract deployments. To deploy new contracts see [Further Deployments](#further-deployments).
 | Chain       | Instance          | Contract Block Explorer Link     | Address                                      |
 |-------------|-------------------|----------------------------------|----------------------------------------------|
-| Arbitrum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.arbiscan.io/address/0xb4bfeA02E82172E8A12F8AA41B5F729B4778F33F)          | `0xb4bfeA02E82172E8A12F8AA41B5F729B4778F33F` |
-| Arbitrum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.arbiscan.io/address/0x700A55267Dad74763b4B5f0C0B727B6a86DD58D3)  | `0x700A55267Dad74763b4B5f0C0B727B6a86DD58D3` |
-| Avalanche   | Mainnet           | [DeliveryVersusPaymentV1](https://snowtrace.io/address/0xF38a32671795Ffb2dFC7791DC10423b526679929)          | `0xF38a32671795Ffb2dFC7791DC10423b526679929` |
-| Avalanche   | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://snowtrace.io/address/0x6297259fB38F4871DF74C510919CF2F7F7831A49)  | `0x6297259fB38F4871DF74C510919CF2F7F7831A49` |
-| Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1](https://testnet.snowtrace.io/address/0xfDD3D731AFb3a1c4eFe18AedF750abBf2189BF9d)          | `0xfDD3D731AFb3a1c4eFe18AedF750abBf2189BF9d` |
-| Avalanche   | Testnet (Fuji)    | [DeliveryVersusPaymentV1HelperV1](https://testnet.snowtrace.io/address/0x82aF9b22399693b7cFb4b5d827D29d7B0b52F120)  | `0x82aF9b22399693b7cFb4b5d827D29d7B0b52F120` |
-| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1](https://etherscan.io/address/0x94D01960C2F09502a64ae83547da0828fd3fF4e3)             | `0x94D01960C2F09502a64ae83547da0828fd3fF4e3` |
-| Ethereum    | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://etherscan.io/address/0xE1e2e50918Bf18207eE87B7618888128d19D8a44) |`0xE1e2e50918Bf18207eE87B7618888128d19D8a44` |
-| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1](https://sepolia.etherscan.io/address/0x2A208C4a5b94A6a8E1546e892832F76a9313741b)          | `0x2A208C4a5b94A6a8E1546e892832F76a9313741b` |
-| Ethereum    | Testnet (Sepolia) | [DeliveryVersusPaymentV1HelperV1](https://sepolia.etherscan.io/address/0x53953083AC1Ad08202398951C77447F9d95B5c98)  | `0x53953083AC1Ad08202398951C77447F9d95B5c98` |
-| Polygon     | Mainnet           | [DeliveryVersusPaymentV1](https://polygonscan.com/address/0x8275709ca99574b676aDd48C32a9969017E5c69C)          | `0x8275709ca99574b676aDd48C32a9969017E5c69C` |
-| Polygon     | Mainnet           | [DeliveryVersusPaymentV1HelperV1](https://polygonscan.com/address/0x5aA9B6D1F6a37F20D90DCA99f0a78c6ab8e9bD4E)  | `0x5aA9B6D1F6a37F20D90DCA99f0a78c6ab8e9bD4E` |
+|||||
 
 ## Further Deployments
 ### Deploying Individual Contracts
@@ -166,18 +159,17 @@ Sequence diagram for a happy path process though a settlement with auto-settle e
 
 ## Events
 Topic0 values for events are:
-
-| Event                                                       | Topic0                                                             |
-|-------------------------------------------------------------|--------------------------------------------------------------------|
-| ETHReceived(address,uint256)                                | 0xbfe611b001dfcd411432f7bf0d79b82b4b2ee81511edac123a3403c357fb972a |
-| ETHWithdrawn(address,uint256)                               | 0x94b2de810873337ed265c5f8cf98c9cffefa06b8607f9a2f1fbaebdfbcfbef1c |
-| SettlementApprovalRevoked(uint256,address)                  | 0x96c5a579760c144ad93a5c19d41440d5185ba0451704c0ac7cb22488d8735ac2 |
-| SettlementApproved(uint256,address)                         | 0x7f89b61c53062fb158619c7b66552eabdfb0e1d37c439a62c2d2b5a657bcea93 |
-| SettlementAutoExecutionFailedOther(uint256,address,bytes)   | 0x63c222ac809d589e48426985c6af11739f936b405e0a78a920fbae6565c07497 |
-| SettlementAutoExecutionFailedPanic(uint256,address,uint256) | 0x3c4e728bba5a6c57290cee894ede5970e12dc7d459808344b14cec9a956f1dc2 |
-| SettlementAutoExecutionFailedReason(uint256,address,string) | 0xe1c01819733d746479549271d3a51445514b8f678614d50ad34d305c67b83d9c |
-| SettlementCreated(uint256,address)                          | 0x3c521c92800f95c83d088ee8c520c5b47b3676958e48a985fe1d45d7cf6dbd78 |
-| SettlementExecuted(uint256,address)                         | 0xf059ff22963b773739a912cc5c0f2f358be1a072c66ba18e2c31e503fd012195 |
+| Event                                                        | Topic0                                                             |
+|--------------------------------------------------------------|--------------------------------------------------------------------|
+| ETHReceived(address,uint256)                                 | 0xbfe611b001dfcd411432f7bf0d79b82b4b2ee81511edac123a3403c357fb972a |
+| ETHWithdrawn(address,uint256)                                | 0x94b2de810873337ed265c5f8cf98c9cffefa06b8607f9a2f1fbaebdfbcfbef1c |
+| SettlementApprovalRevoked(uint256,address)                   | 0x96c5a579760c144ad93a5c19d41440d5185ba0451704c0ac7cb22488d8735ac2 |
+| SettlementApproved(uint256,address)                          | 0x7f89b61c53062fb158619c7b66552eabdfb0e1d37c439a62c2d2b5a657bcea93 |
+| SettlementCreated(uint256,address)                           | 0x3c521c92800f95c83d088ee8c520c5b47b3676958e48a985fe1d45d7cf6dbd78 |
+| SettlementExecuted(uint256,address)                          | 0xf059ff22963b773739a912cc5c0f2f358be1a072c66ba18e2c31e503fd012195 |
+| SettlementExecutionFailedOther(uint256,address,bool,bytes)   | 0x2fb0f0e288825d79bc923ab286ce365c1552f8776aa33413af9a35b5ae6028c5 |
+| SettlementExecutionFailedPanic(uint256,address,bool,uint256) | 0xe8371a49f37ebac2050c0e5b70c4ee88e0776c5ba7e3be09e1b9660fefa3528a |
+| SettlementExecutionFailedReason(uint256,address,bool,string) | 0x55e0c9c38879d7b337ccd4db63235e0c504f645e3f925a790a1496ac7d090174 |
 
 ## Linting and pre-commit
 This repository uses pre-commit to run lightweight checks and enforce a standard Solidity code format via Foundry.
@@ -200,9 +192,6 @@ Formatting standard:
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
-
-## Roadmap
-See [ROADMAP.md](ROADMAP.md) for more details.
 
 ## License
 This project is licensed under the terms of the [LICENSE](LICENSE).

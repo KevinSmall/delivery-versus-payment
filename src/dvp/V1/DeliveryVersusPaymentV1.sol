@@ -2,12 +2,12 @@
 pragma solidity 0.8.30;
 
 /**
- * ██████╗░██╗░░░██╗██████╗░███████╗░█████╗░░██████╗██╗░░░██╗░░░██╗░░██╗██╗░░░██╗███████╗
- * ██╔══██╗██║░░░██║██╔══██╗██╔════╝██╔══██╗██╔════╝╚██╗░██╔╝░░░╚██╗██╔╝╚██╗░██╔╝╚════██║
- * ██║░░██║╚██╗░██╔╝██████╔╝█████╗░░███████║╚█████╗░░╚████╔╝░░░░░╚███╔╝░░╚████╔╝░░░███╔═╝
- * ██║░░██║░╚████╔╝░██╔═══╝░██╔══╝░░██╔══██║░╚═══██╗░░╚██╔╝░░░░░░██╔██╗░░░╚██╔╝░░██╔══╝░░
- * ██████╔╝░░╚██╔╝░░██║░░░░░███████╗██║░░██║██████╔╝░░░██║░░░██╗██╔╝╚██╗░░░██║░░░███████╗
- * ╚═════╝░░░░╚═╝░░░╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝
+ *       _                                        _                 _
+ *    __| |_   ___ __   ___  __ _ ___ _   _      | |_ _ __ __ _  __| | ___
+ *   / _` \ \ / / '_ \ / _ \/ _` / __| | | |     | __| '__/ _` |/ _` |/ _ \
+ *  | (_| |\ V /| |_) |  __/ (_| \__ \ |_| |  _  | |_| | | (_| | (_| |  __/
+ *   \__,_| \_/ | .__/ \___|\__,_|___/\__, | (_)  \__|_|  \__,_|\__,_|\___|
+ *              |_|                   |___/
  */
 import {Address} from "@openzeppelin/contracts-v5-2-0/utils/Address.sol";
 import {ERC165Checker} from "@openzeppelin/contracts-v5-2-0/utils/introspection/ERC165Checker.sol";
@@ -20,7 +20,7 @@ import {SafeERC20} from "@openzeppelin/contracts-v5-2-0/token/ERC20/utils/SafeER
 /**
  * @title DeliveryVersusPaymentV1
  * @dev Delivery Versus Payment implementation for ERC-20, ERC-721 and Ether transfers.
- * Created by https://pv0.one. UI implemented at https://dvpeasy.xyz.
+ * UI implemented at https://dvpeasy.trade.
  *
  * Workflow Summary:
  *
@@ -556,7 +556,7 @@ contract DeliveryVersusPaymentV1 is IDeliveryVersusPaymentV1, ReentrancyGuardTra
           isNFT: true,
           amountOrIdRequired: f.amountOrId,
           amountOrIdApprovedForDvp: nft.getApproved(f.amountOrId) == address(this)
-              || nft.isApprovedForAll(party, address(this))
+            || nft.isApprovedForAll(party, address(this))
             ? f.amountOrId
             : 0,
           amountOrIdHeldByParty: nft.ownerOf(f.amountOrId) == party ? f.amountOrId : 0
