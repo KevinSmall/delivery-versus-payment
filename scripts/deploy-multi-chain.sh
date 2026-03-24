@@ -4,6 +4,7 @@ set -euo pipefail
 # env vars
 if [ -f .env ]; then
   set -a        # auto-export vars
+  # shellcheck source=/dev/null
   source .env
   set +a
 fi
@@ -25,7 +26,7 @@ SUPPORTED_NETWORKS=(
 
 usage() {
   cat <<EOF
-Usage: $(basename "$0") [-n NETWORK]...
+Usage: $(basename "$0") [-n NETWORK1] [-n NETWORK2] ...
 
 Options:
   -n NETWORK   Specify a network to deploy to. Can be provided multiple times.
