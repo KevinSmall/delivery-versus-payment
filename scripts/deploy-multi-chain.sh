@@ -17,12 +17,10 @@ fi
 # Supported networks list — edit here to add/remove supported networks.
 # Network names need to match those defined in foundry.toml
 SUPPORTED_NETWORKS=(
-  "sepolia"
-  "arbsepolia"
-  "polygon"
-  "fuji"
-  "avalanche"
-  "ethereum"
+  "base_sepolia"
+  "eth_sepolia"
+  "base_mainnet"
+  "eth_mainnet"
 )
 
 usage() {

@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.30;
+pragma solidity 0.8.34;
 
 /**
- *       _                                        _                 _
- *    __| |_   ___ __   ___  __ _ ___ _   _      | |_ _ __ __ _  __| | ___
- *   / _` \ \ / / '_ \ / _ \/ _` / __| | | |     | __| '__/ _` |/ _` |/ _ \
- *  | (_| |\ V /| |_) |  __/ (_| \__ \ |_| |  _  | |_| | | (_| | (_| |  __/
- *   \__,_| \_/ | .__/ \___|\__,_|___/\__, | (_)  \__|_|  \__,_|\__,_|\___|
- *              |_|                   |___/
+ * ██████╗ ██╗   ██╗██████╗ ███████╗ █████╗ ███████╗██╗   ██╗   ████████╗██████╗  █████╗ ██████╗ ███████╗
+ * ██╔══██╗██║   ██║██╔══██╗██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝   ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝
+ * ██║  ██║██║   ██║██████╔╝█████╗  ███████║███████╗ ╚████╔╝       ██║   ██████╔╝███████║██║  ██║█████╗
+ * ██║  ██║╚██╗ ██╔╝██╔═══╝ ██╔══╝  ██╔══██║╚════██║  ╚██╔╝        ██║   ██╔══██╗██╔══██║██║  ██║██╔══╝
+ * ██████╔╝ ╚████╔╝ ██║     ███████╗██║  ██║███████║   ██║   ██╗   ██║   ██║  ██║██║  ██║██████╔╝███████╗
+ * ╚═════╝   ╚═══╝  ╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝
  */
 import {IDeliveryVersusPaymentV1} from "./IDeliveryVersusPaymentV1.sol";
 
@@ -15,6 +15,7 @@ import {IDeliveryVersusPaymentV1} from "./IDeliveryVersusPaymentV1.sol";
  * @title DeliveryVersusPaymentV1HelperV1
  * @dev Provides view helper functions to page through settlements using a cursor-based approach.
  * UI implemented at https://dvpeasy.trade.
+ * Contract source code at https://github.com/KevinSmall/delivery-versus-payment.
  * It allows filtering by token address, by involved party, or by token type (Ether, ERC20, or NFT).
  * Each function accepts a DVP contract, a starting cursor and a pageSize and returns matching settlement
  * IDs along with a nextCursor (which is the settlement ID to use as the starting cursor in the next call).

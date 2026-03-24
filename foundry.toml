@@ -10,22 +10,18 @@ via_ir = true
 # bytecode_hash = "none"
 
 [rpc_endpoints]
-arbsepolia = "${RPC_ARBSEPOLIA}"
-avalanche = "${RPC_AVALANCHE}"
-ethereum = "${RPC_ETHEREUM}"
-fuji = "${RPC_FUJI}"
-polygon = "${RPC_POLYGON}"
-sepolia = "${RPC_SEPOLIA}"
+base_mainnet = "${RPC_BASE_MAINNET}"
+base_sepolia = "${RPC_BASE_SEPOLIA}"
+eth_mainnet = "${RPC_ETH_MAINNET}"
+eth_sepolia = "${RPC_ETH_SEPOLIA}"
 
 [etherscan]
 # https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#etherscan-api-key-settings
 # also has optional url attribute
-arbsepolia = { key = "${ARBISCAN_API_KEY}" }
-avalanche = { key = "${SNOWTRACE_API_KEY}", url = "${SNOWTRACE_AVALANCHE_URL}" }
-ethereum = { key = "${ETHERSCAN_API_KEY}" }
-fuji = { key = "${SNOWTRACE_API_KEY}", url = "${SNOWTRACE_FUJI_URL}" }
-polygon = { key = "${POLYGONSCAN_API_KEY}" }
-sepolia = { key = "${ETHERSCAN_API_KEY}" }
+base_mainnet = { key = "${BASESCAN_API_KEY}" }
+base_sepolia = { key = "${BASESCAN_API_KEY}" }
+eth_mainnet = { key = "${ETHERSCAN_API_KEY}" }
+eth_sepolia = { key = "${ETHERSCAN_API_KEY}" }
 
 [fmt]
 line_length = 120

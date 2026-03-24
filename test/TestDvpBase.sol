@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.30;
+pragma solidity 0.8.34;
 
 import {Test} from "forge-std/Test.sol";
 import {DeliveryVersusPaymentV1} from "../src/dvp/V1/DeliveryVersusPaymentV1.sol";

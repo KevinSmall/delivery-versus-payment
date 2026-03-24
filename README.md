@@ -30,10 +30,11 @@ This repo is a permissionless implementation of the Delivery Versus Payment (DVP
 
 The contract suite is permissionless, non-upgradeable and has no admins or privileged accounts. Anyone can use the deployed contracts.
 
-Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment), this fork is also open-sourced under the MIT [license](LICENSE) and provided as a public good.
+UI available at https://dvpeasy.trade.
+
+Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment), this fork is also open-sourced under the MIT [license](LICENSE).
 
 ### Features
- - UI available at https://dvpeasy.trade.
  - Non-upgradeable, singleton [Delivery Versus Payment contract](contracts/dvp/V1/DeliveryVersusPaymentV1.sol).
  - Allows atomic swaps of an arbitrary number of assets between an arbitrary number of parties.
  - Permissionless, anyone can create and execute these swaps, so long as involved parties have approved.
@@ -94,7 +95,7 @@ $ scripts/deploy-multi-chain.sh -h
 ```
 which deploys to all chains supported by the script, or run:
 ```bash
-./scripts/deploy-multi-chain.sh -n sepolia arbsepolia
+./scripts/deploy-multi-chain.sh -n eth_sepolia base_sepolia
 ```
 to deploy just to some of the supported chains.
 
@@ -179,7 +180,7 @@ Setup (one-time):
   - pipx: `pipx install pre-commit`
   - pip: `pip install --user pre-commit`
   - Homebrew (macOS): `brew install pre-commit`
-- Ensure Foundry is installed and available in your PATH: https://book.getfoundry.sh/getting-started/installation
+- Ensure Foundry is [installed](https://book.getfoundry.sh/getting-started/installation) and available in your PATH.
 - Enable hooks in this repo: `pre-commit install`
 
 Usage:

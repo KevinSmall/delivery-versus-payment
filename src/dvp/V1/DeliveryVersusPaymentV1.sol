@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.30;
+pragma solidity 0.8.34;
 
 /**
- *       _                                        _                 _
- *    __| |_   ___ __   ___  __ _ ___ _   _      | |_ _ __ __ _  __| | ___
- *   / _` \ \ / / '_ \ / _ \/ _` / __| | | |     | __| '__/ _` |/ _` |/ _ \
- *  | (_| |\ V /| |_) |  __/ (_| \__ \ |_| |  _  | |_| | | (_| | (_| |  __/
- *   \__,_| \_/ | .__/ \___|\__,_|___/\__, | (_)  \__|_|  \__,_|\__,_|\___|
- *              |_|                   |___/
+ * ██████╗ ██╗   ██╗██████╗ ███████╗ █████╗ ███████╗██╗   ██╗   ████████╗██████╗  █████╗ ██████╗ ███████╗
+ * ██╔══██╗██║   ██║██╔══██╗██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝   ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝
+ * ██║  ██║██║   ██║██████╔╝█████╗  ███████║███████╗ ╚████╔╝       ██║   ██████╔╝███████║██║  ██║█████╗
+ * ██║  ██║╚██╗ ██╔╝██╔═══╝ ██╔══╝  ██╔══██║╚════██║  ╚██╔╝        ██║   ██╔══██╗██╔══██║██║  ██║██╔══╝
+ * ██████╔╝ ╚████╔╝ ██║     ███████╗██║  ██║███████║   ██║   ██╗   ██║   ██║  ██║██║  ██║██████╔╝███████╗
+ * ╚═════╝   ╚═══╝  ╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝
  */
 import {Address} from "@openzeppelin/contracts-v5-2-0/utils/Address.sol";
 import {ERC165Checker} from "@openzeppelin/contracts-v5-2-0/utils/introspection/ERC165Checker.sol";
@@ -21,6 +21,7 @@ import {SafeERC20} from "@openzeppelin/contracts-v5-2-0/token/ERC20/utils/SafeER
  * @title DeliveryVersusPaymentV1
  * @dev Delivery Versus Payment implementation for ERC-20, ERC-721 and Ether transfers.
  * UI implemented at https://dvpeasy.trade.
+ * Contract source code at https://github.com/KevinSmall/delivery-versus-payment.
  *
  * Workflow Summary:
  *
