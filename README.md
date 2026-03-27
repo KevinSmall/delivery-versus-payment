@@ -26,13 +26,17 @@
 - [License](#license)
 
 ## Description
-This repo is a permissionless implementation of the Delivery Versus Payment (DVP) protocol. You can use it to do multi-party atomic swaps of digital assets. It supports ERC-20, ERC-721, and Ether transfers exchanged between two or more parties. Either all parts of the settlement happen in a single transaction, or nothing happens at all.
+This repo contains Solidity smart contracts that implement a permissionless version of the [Delivery Versus Payment (DVP) protocol](https://www.investopedia.com/terms/d/dvp.asp).
 
-The contract suite is permissionless, non-upgradeable and has no admins or privileged accounts. Anyone can use the deployed contracts.
+This DVP implementation allows multi-party atomic swaps of digital assets including ERC-20, ERC-721 and Ether. Being "DVP" means that either **all parts of the swap happen in a single transaction**, or **nothing happens at all**.
 
-UI available at https://dvpeasy.trade.
+The contracts are **permissionless**, **non-upgradeable** and have **no admins or privileged accounts**.
 
-Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment), this fork is also open-sourced under the MIT [license](LICENSE).
+[UIs](UI-Implementations) are available at:
+ - https://dvpeasy.trade
+ - Vercel tbc
+
+Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment) and audited, this fork is also open-sourced under the MIT [license](LICENSE).
 
 ### Features
  - Non-upgradeable, singleton [Delivery Versus Payment contract](contracts/dvp/V1/DeliveryVersusPaymentV1.sol).
@@ -159,7 +163,7 @@ Settlement approval can be done in batches. Settlement execution can potentially
 | revokeApprovals()    | OZ nonReentrant modifer   |
 | withdrawETH()        | OZ nonReentrant modifer   |
 
-There are some subtleties inside the protection for `approveSettlements()` and `executeSettlement()`, explained [here](REENTRANCY.md).
+There are some subtleties inside the protection for `approveSettlements()` and `executeSettlement()`, explained [here](Reentrancy.md).
 
 ## Sequence Diagram
 Sequence diagram for a happy path process though a settlement with auto-settle enabled.

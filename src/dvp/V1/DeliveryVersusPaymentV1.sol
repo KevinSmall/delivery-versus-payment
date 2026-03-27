@@ -2,12 +2,14 @@
 pragma solidity 0.8.34;
 
 /**
- * ██████╗ ██╗   ██╗██████╗ ███████╗ █████╗ ███████╗██╗   ██╗   ████████╗██████╗  █████╗ ██████╗ ███████╗
- * ██╔══██╗██║   ██║██╔══██╗██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝   ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝
- * ██║  ██║██║   ██║██████╔╝█████╗  ███████║███████╗ ╚████╔╝       ██║   ██████╔╝███████║██║  ██║█████╗
- * ██║  ██║╚██╗ ██╔╝██╔═══╝ ██╔══╝  ██╔══██║╚════██║  ╚██╔╝        ██║   ██╔══██╗██╔══██║██║  ██║██╔══╝
- * ██████╔╝ ╚████╔╝ ██║     ███████╗██║  ██║███████║   ██║   ██╗   ██║   ██║  ██║██║  ██║██████╔╝███████╗
- * ╚═════╝   ╚═══╝  ╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝
+ * ______     _ _                                   ______                                _
+ * |  _  \   | (_)                                  | ___ \                              | |
+ * | | | |___| |___   _____ _ __ _   _  __   _____  | |_/ /_ _ _   _ _ __ ___   ___ _ __ | |_
+ * | | | / _ \ | \ \ / / _ \ '__| | | | \ \ / / __| |  __/ _` | | | | '_ ` _ \ / _ \ '_ \| __|
+ * | |/ /  __/ | |\ V /  __/ |  | |_| |  \ V /\__ \ | | | (_| | |_| | | | | | |  __/ | | | |_
+ * |___/ \___|_|_| \_/ \___|_|   \__, |   \_/ |___/ \_|  \__,_|\__, |_| |_| |_|\___|_| |_|\__|
+ *                                __/ |                         __/ |
+ *                               |___/                         |___/
  */
 import {Address} from "@openzeppelin/contracts-v5-2-0/utils/Address.sol";
 import {ERC165Checker} from "@openzeppelin/contracts-v5-2-0/utils/introspection/ERC165Checker.sol";
@@ -20,8 +22,8 @@ import {SafeERC20} from "@openzeppelin/contracts-v5-2-0/token/ERC20/utils/SafeER
 /**
  * @title DeliveryVersusPaymentV1
  * @dev Delivery Versus Payment implementation for ERC-20, ERC-721 and Ether transfers.
- * UI implemented at https://dvpeasy.trade.
- * Contract source code at https://github.com/KevinSmall/delivery-versus-payment.
+ * Contract source code at: https://github.com/KevinSmall/delivery-versus-payment.
+ * UI implementations at:
  *
  * Workflow Summary:
  *
