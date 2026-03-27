@@ -33,8 +33,8 @@ This DVP implementation allows multi-party atomic swaps of digital assets includ
 The contracts are **permissionless**, **non-upgradeable** and have **no admins or privileged accounts**.
 
 [UIs](UI-Implementations) are available at:
- - https://dvpeasy.trade
- - Vercel tbc
+ - https://dvpeasy.trade/
+ - https://dvp.works/
 
 Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment) and audited, this fork is also open-sourced under the MIT [license](LICENSE).
 
