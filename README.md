@@ -39,11 +39,11 @@ The contracts are **permissionless**, **non-upgradeable** and have **no admins o
 Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment) and audited, this fork is also open-sourced under the MIT [license](LICENSE).
 
 ### Features
- - Non-upgradeable, singleton [Delivery Versus Payment contract](contracts/dvp/V1/DeliveryVersusPaymentV1.sol).
+ - Non-upgradeable, singleton [Delivery Versus Payment contract](src/dvp/V1/DeliveryVersusPaymentV1.sol).
  - Allows atomic swaps of an arbitrary number of assets between an arbitrary number of parties.
  - Permissionless, anyone can create and execute these swaps, so long as involved parties have approved.
  - Supports assets including native ETH, ERC-20 and ERC-721.
- - [Helper contract](contracts/dvp/V1/DeliveryVersusPaymentV1HelperV1.sol) provides search functionality for off-chain use.
+ - [Helper contract](src/dvp/V1/DeliveryVersusPaymentV1HelperV1.sol) provides search functionality for off-chain use.
 
 ### Terminology
  - Party: An address involved as either a `from` or `to` in an asset movement.
