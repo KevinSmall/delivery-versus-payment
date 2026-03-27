@@ -23,7 +23,7 @@ import {SafeERC20} from "@openzeppelin/contracts-v5-2-0/token/ERC20/utils/SafeER
  * @title DeliveryVersusPaymentV1
  * @dev Delivery Versus Payment implementation for ERC-20, ERC-721 and Ether transfers.
  * Contract source code at: https://github.com/KevinSmall/delivery-versus-payment.
- * UI implementations at:
+ * UI implementations at: https://github.com/KevinSmall/delivery-versus-payment/blob/main/UI-Implementations.md.
  *
  * Workflow Summary:
  *

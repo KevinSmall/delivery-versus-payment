@@ -15,8 +15,8 @@ pragma solidity 0.8.34;
 /**
  * @title IDeliveryVersusPaymentV1
  * @dev Interface sufficient for DVP Helper contract to interact with a DVP contract.
- * UI implemented at https://dvpeasy.trade.
- * Contract source code at https://github.com/KevinSmall/delivery-versus-payment.
+ * Contract source code at: https://github.com/KevinSmall/delivery-versus-payment.
+ * UI implementations at: https://github.com/KevinSmall/delivery-versus-payment/blob/main/UI-Implementations.md.
  */
 interface IDeliveryVersusPaymentV1 {
   /// @dev A Flow is a single transfer from one address to another

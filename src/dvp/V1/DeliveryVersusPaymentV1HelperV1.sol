@@ -16,14 +16,16 @@ import {IDeliveryVersusPaymentV1} from "./IDeliveryVersusPaymentV1.sol";
 /**
  * @title DeliveryVersusPaymentV1HelperV1
  * @dev Provides view helper functions to page through settlements using a cursor-based approach.
- * UI implemented at https://dvpeasy.trade.
- * Contract source code at https://github.com/KevinSmall/delivery-versus-payment.
- * It allows filtering by token address, by involved party, or by token type (Ether, ERC20, or NFT).
+ * Contract source code at: https://github.com/KevinSmall/delivery-versus-payment.
+ * UI implementations at: https://github.com/KevinSmall/delivery-versus-payment/blob/main/UI-Implementations.md.
+ *
+ * This helper allows filtering by token address, by involved party, or by token type (Ether, ERC20, or NFT).
  * Each function accepts a DVP contract, a starting cursor and a pageSize and returns matching settlement
  * IDs along with a nextCursor (which is the settlement ID to use as the starting cursor in the next call).
  * These functions are not intended to be used in state-changing transactions, they are intended for
  * use by clients as read-only views of the DeliveryVersusPaymentV1 contract.
- * It is clients resposibility to ensure that the DVP contract is valid.
+ * It is the client's resposibility to ensure that the passed DVP contract is valid. See list of validated DVP
+ * contracts at: https://github.com/KevinSmall/delivery-versus-payment.
  */
 contract DeliveryVersusPaymentV1HelperV1 {
   error InvalidPageSize();
