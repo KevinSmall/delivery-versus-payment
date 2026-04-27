@@ -26,7 +26,7 @@
 - [License](#license)
 
 ## Description
-This repo contains Solidity smart contracts that implement a permissionless version of the [Delivery Versus Payment (DVP) protocol](https://www.investopedia.com/terms/d/dvp.asp).
+This repo contains Solidity smart contracts that implement an audited, permissionless version of the [Delivery Versus Payment (DVP) protocol](https://www.investopedia.com/terms/d/dvp.asp).
 
 This DVP implementation allows multi-party atomic swaps of digital assets including ERC-20, ERC-721 and Ether. Being "DVP" means that either **all parts of the swap happen in a single transaction**, or **nothing happens at all**.
 
@@ -43,6 +43,7 @@ Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payme
  - Allows atomic swaps of an arbitrary number of assets between an arbitrary number of parties.
  - Permissionless, anyone can create and execute these swaps, so long as involved parties have approved.
  - Supports assets including native ETH, ERC-20 and ERC-721.
+ - Audited by [ShadowyCreators](https://github.com/ShadowyCreators/pv01-response-to-shadowy-audit).
  - [Helper contract](src/dvp/V1/DeliveryVersusPaymentV1HelperV1.sol) provides search functionality for off-chain use.
 
 ### Terminology
