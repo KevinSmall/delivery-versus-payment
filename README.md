@@ -32,19 +32,20 @@ This DVP implementation allows multi-party atomic swaps of digital assets includ
 
 The contracts are **permissionless**, **non-upgradeable** and have **no admins or privileged accounts**.
 
-[UIs](UI-Implementations) are available at:
- - https://dvpeasy.trade/
- - https://dvp.works/
+Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment) and [audited](https://github.com/ShadowyCreators/pv01-response-to-shadowy-audit), this fork is also open-sourced under the MIT [license](LICENSE).
 
-Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payment) and audited, this fork is also open-sourced under the MIT [license](LICENSE).
-
-### Features
+### Smart Contract Features
  - Non-upgradeable, singleton [Delivery Versus Payment contract](src/dvp/V1/DeliveryVersusPaymentV1.sol).
  - Allows atomic swaps of an arbitrary number of assets between an arbitrary number of parties.
  - Permissionless, anyone can create and execute these swaps, so long as involved parties have approved.
  - Supports assets including native ETH, ERC-20 and ERC-721.
  - Audited by [ShadowyCreators](https://github.com/ShadowyCreators/pv01-response-to-shadowy-audit).
  - [Helper contract](src/dvp/V1/DeliveryVersusPaymentV1HelperV1.sol) provides search functionality for off-chain use.
+
+### Frontends
+[UIs](/UI-Implementations.md) are available at:
+- [dvp.works](https://dvp.works/)
+- dvpeasy.trade (in progress)
 
 ### Terminology
  - Party: An address involved as either a `from` or `to` in an asset movement.
@@ -61,13 +62,13 @@ forge build
 
 ## Commands
 The following CLI commands are available:
-| # | Action         | Usage                         | Description                               |
-|---|----------------|-------------------------------|-------------------------------------------|
-| 1 | Compile        | `forge build`                 | Compile Solidity smart contracts.         |
-| 2 | Test           | `forge test --summary`        | Run smart contract tests.                 |
-| 3 | Coverage       | `forge coverage --ir-minimum` | Run tests and generate coverage reports.  |
-| 4 | Gas Estimate   | `forge test --gas-report`     | Run tests with gas reporting.             |
-| 5 | Sizer          | `forge build --sizes`         | Report contract size.                     |
+| Action         | Usage                         | Description                               |
+|----------------|-------------------------------|-------------------------------------------|
+| Compile        | `forge build`                 | Compile Solidity smart contracts.         |
+| Test           | `forge test --summary`        | Run smart contract tests.                 |
+| Coverage       | `forge coverage --ir-minimum` | Run tests and generate coverage reports.  |
+| Gas Estimate   | `forge test --gas-report`     | Run tests with gas reporting.             |
+| Sizer          | `forge build --sizes`         | Report contract size.                     |
 
 ## Deployed Addresses
 The DVP contracts are available at the following addresses. Since the solution is permissionless, they can be freely used as they are, without needing further contract deployments. To deploy new contracts see [Further Deployments](#further-deployments).

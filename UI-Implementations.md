@@ -1,7 +1,9 @@
 # UI Implementations
 
 Different UI Implementations are available at:
-- https://dvpeasy.trade/
-- https://dvp.works/
+- [dvp.works](https://dvp.works/)
+- dvpeasy.trade (in progress)
 
-All UI implementations use the same backend contracts. They are intended to demonstrate the permissionless nature of the smart contracts.
+All UI implementations share the same backend contracts.
+
+The permissionless nature of the smart contracts means anyone can create a UI.
