@@ -1,0 +1,23 @@
+# Halmos configuration (https://github.com/a16z/halmos)
+#
+# Halmos reads this file automatically when you run `halmos` from the repo root, so the plain command
+# `halmos` picks up the settings below with no extra flags. Every key here mirrors a `--<key>` CLI
+# option (dashes become underscores), and anything passed on the command line overrides this file.
+[global]
+
+# Only run functions whose name contains this string. Our Halmos tests use the canonical `check_`
+# prefix, which also keeps them separate from Foundry's `test*` / `invariant_*` functions.
+function = "check_"
+
+# Only load contracts whose name matches this regex (Halmos anchors it as ^...$). "Dvp.*Halmos" matches
+# every Halmos test (DvpEthBalanceHalmos, DvpUnboundedHalmos, ...) while still excluding the large
+# Foundry unit-test contracts under test/. NB: DvpUnboundedHalmos is intentionally unsound and emits a
+# "loop unrolling bound exceeded" WARNING, so the default `halmos` run will now show that warning.
+contract = "Dvp.*Halmos"
+
+# Maximum number of iterations to unroll bounded loops. The ETH-only single-flow path only loops once,
+# so 4 is generous headroom; raise it if you add tests with more flows/settlements.
+loop = 4
+
+# Print a per-test summary (paths explored, solver queries). Helpful while learning what Halmos does.
+verbose = 1
