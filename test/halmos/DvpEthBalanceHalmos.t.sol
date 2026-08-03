@@ -70,9 +70,7 @@ contract DvpEthBalanceHalmos is SymTest, Test {
    *      NOTE: Under `forge test` this function does nothing useful (its name isn't `test*`), so it is
    *      effectively inert for Foundry. It is meant to be run with the `halmos` tool. See README.md.
    */
-  function check_approveEth_balanceMatchesDeposit(uint256 amount, address party, address to, uint128 cutoff)
-    public
-  {
+  function check_approveEth_balanceMatchesDeposit(uint256 amount, address party, address to, uint128 cutoff) public {
     // --- Constrain the symbolic inputs to a valid, reachable scenario -------------------------------
     // createSettlement reverts on a zero from/to address, so exclude those.
     vm.assume(party != address(0));
@@ -89,13 +87,7 @@ contract DvpEthBalanceHalmos is SymTest, Test {
     // --- Build a single ETH flow: party sends `amount` wei to `to` ---------------------------------
     // token == address(0) marks this as an ETH transfer (no ERC-20/ERC-721 involved).
     IDeliveryVersusPaymentV1.Flow[] memory flows = new IDeliveryVersusPaymentV1.Flow[](1);
-    flows[0] = IDeliveryVersusPaymentV1.Flow({
-      token: address(0),
-      isNFT: false,
-      from: party,
-      to: to,
-      amountOrId: amount
-    });
+    flows[0] = IDeliveryVersusPaymentV1.Flow({token: address(0), isNFT: false, from: party, to: to, amountOrId: amount});
 
     // isAutoSettled = false so approval does NOT trigger execution (we are only testing the deposit).
     uint256 id = dvp.createSettlement(flows, "halmos", cutoff, false);
@@ -119,7 +111,7 @@ contract DvpEthBalanceHalmos is SymTest, Test {
     // 2) Consistency: the amount the contract recorded as this party's deposit equals what was sent.
     //    getSettlementPartyStatus returns (isApproved, etherRequired, etherDeposited, tokenStatuses);
     //    for an ETH-only flow it makes no external token calls, so it is safe to call under Halmos.
-    (, , uint256 etherDeposited, ) = dvp.getSettlementPartyStatus(id, party);
+    (,, uint256 etherDeposited,) = dvp.getSettlementPartyStatus(id, party);
     assertEq(etherDeposited, amount, "recorded deposit must equal the amount sent");
   }
 }

@@ -87,13 +87,7 @@ contract DvpUnboundedHalmos is SymTest, Test {
 
       // One ETH flow: party -> to for `amt` wei.
       IDeliveryVersusPaymentV1.Flow[] memory flows = new IDeliveryVersusPaymentV1.Flow[](1);
-      flows[0] = IDeliveryVersusPaymentV1.Flow({
-        token: address(0),
-        isNFT: false,
-        from: party,
-        to: to,
-        amountOrId: amt
-      });
+      flows[0] = IDeliveryVersusPaymentV1.Flow({token: address(0), isNFT: false, from: party, to: to, amountOrId: amt});
 
       uint256 id = dvp.createSettlement(flows, "unbounded", cutoff, false);
 
