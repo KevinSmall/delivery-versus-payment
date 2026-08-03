@@ -69,6 +69,7 @@ The following CLI commands are available:
 | Coverage       | `forge coverage --ir-minimum` | Run tests and generate coverage reports.  |
 | Gas Estimate   | `forge test --gas-report`     | Run tests with gas reporting.             |
 | Sizer          | `forge build --sizes`         | Report contract size.                     |
+| Symbolic Tests | `halmos`                      | Run Halmos symbolic-execution proofs.     |
 
 ## Deployed Addresses
 The DVP contracts are available at the following addresses. Since the solution is permissionless, they can be freely used as they are, without needing further contract deployments. To deploy new contracts see [Further Deployments](#further-deployments).
@@ -184,6 +185,19 @@ Topic0 values for events are:
 | SettlementExecutionFailedOther(uint256,address,bool,bytes)   | 0x2fb0f0e288825d79bc923ab286ce365c1552f8776aa33413af9a35b5ae6028c5 |
 | SettlementExecutionFailedPanic(uint256,address,bool,uint256) | 0xe8371a49f37ebac2050c0e5b70c4ee88e0776c5ba7e3be09e1b9660fefa3528a |
 | SettlementExecutionFailedReason(uint256,address,bool,string) | 0x55e0c9c38879d7b337ccd4db63235e0c504f645e3f925a790a1496ac7d090174 |
+
+## Formal Verification (Halmos)
+Beyond Foundry's unit and invariant (fuzz) tests, this repo includes [Halmos](https://github.com/a16z/halmos) symbolic-execution proofs under `test/halmos/`. Where fuzzing *samples* inputs, Halmos reasons over *all* inputs within the modelled bounds, effectively proving a property rather than sampling it.
+
+The default suite proves the per-transaction form of the `constraint_eth_balance_consistency` invariant. See [`test/halmos/README.md`](test/halmos/README.md) for install and usage.
+
+Setup (one-time):
+- Install Halmos (choose one): `pipx install halmos` or `pip install --user halmos`
+- Ensure Foundry is [installed](https://book.getfoundry.sh/getting-started/installation) and available in your PATH.
+
+Usage:
+- Run the proofs from the repo root: `halmos` (configured via `halmos.toml`, no flags needed).
+- CI runs the same command as a dedicated job in `.github/workflows/foundry-ci.yml`.
 
 ## Linting and pre-commit
 This repository uses pre-commit to run lightweight checks and enforce a standard Solidity code format via Foundry.

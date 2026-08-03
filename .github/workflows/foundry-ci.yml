@@ -2,8 +2,13 @@ name: Foundry Build and Test
 
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   FOUNDRY_PROFILE: ci
@@ -36,3 +41,52 @@ jobs:
         run: |
           forge test -vvv
         id: test
+
+  halmos:
+    name: Halmos symbolic tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: PV01-org/foundry-toolchain@v1
+
+      - name: Install dependencies
+        run: forge install
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          # Pin to a Python that Halmos supports (see test/halmos/README.md).
+          python-version: "3.12"
+
+      - name: Cache pip downloads (Halmos)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-halmos-0.3.3
+
+      - name: Install Halmos
+        run: pip install halmos==0.3.3
+
+      - name: Show Halmos version
+        run: halmos --version
+
+      - name: Run Halmos symbolic tests
+        # Uses halmos.toml, which is scoped to the sound proof(s) only. The teaching
+        # artifacts (DvpUnboundedHalmos, SolverLimitsHalmos) are intentionally excluded.
+        #
+        # Halmos exits 0 even when it prints a soundness WARNING (e.g. "loop unrolling
+        # bound exceeded"), so a bare `halmos` could go green on an unsound pass. Fail the
+        # job if any Halmos WARNING appears. Case-sensitive on purpose: this matches
+        # Halmos's upper-case "WARNING" only, not forge's lower-case "warning[...]" build
+        # lints, which are unrelated informational output.
+        run: |
+          halmos 2>&1 | tee halmos.log
+          if grep -q 'WARNING' halmos.log; then
+            echo "::error::Halmos emitted a WARNING (potentially unsound result)."
+            exit 1
+          fi
+        id: halmos
