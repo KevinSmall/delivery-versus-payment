@@ -5,12 +5,16 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/KevinSmall/delivery-versus-payment)
 
 - [Description](#description)
-  - [Features](#features)
+  - [Smart Contract Features](#smart-contract-features)
+  - [Frontends](#frontends)
   - [Terminology](#terminology)
 - [Installation](#installation)
 - [Commands](#commands)
 - [Deployed Addresses](#deployed-addresses)
-  - [Further Deployments](#further-deployments)
+- [Further Deployments](#further-deployments)
+  - [Deploying Individual Contracts](#deploying-individual-contracts)
+  - [Deploying Contracts to Many Chains](#deploying-contracts-to-many-chains)
+  - [Deploying Contracts to Many New Chains](#deploying-contracts-to-many-new-chains)
 - [Workflow Summary](#workflow-summary)
   - [Create a Settlement](#create-a-settlement)
   - [Approve a Settlement](#approve-a-settlement)
@@ -21,8 +25,9 @@
   - [Reentrancy Protection](#reentrancy-protection)
 - [Sequence Diagram](#sequence-diagram)
 - [Events](#events)
+- [Formal Verification (Halmos)](#formal-verification-halmos)
+- [Linting and pre-commit](#linting-and-pre-commit)
 - [Contributing](#contributing)
-- [Roadmap](#roadmap)
 - [License](#license)
 
 ## Description
@@ -39,7 +44,7 @@ Originally developed at [PV01](https://github.com/PV01-org/delivery-versus-payme
  - Allows atomic swaps of an arbitrary number of assets between an arbitrary number of parties.
  - Permissionless, anyone can create and execute these swaps, so long as involved parties have approved.
  - Supports assets including native ETH, ERC-20 and ERC-721.
- - Audited by [ShadowyCreators](https://github.com/ShadowyCreators/pv01-response-to-shadowy-audit).
+ - Audited by [ShadowyCreators](https://github.com/ShadowyCreators/pv01-response-to-shadowy-audit), formal verification using [Halmos](test/halmos/README.md).
  - [Helper contract](src/dvp/V1/DeliveryVersusPaymentV1HelperV1.sol) provides search functionality for off-chain use.
 
 ### Frontends
