@@ -9,11 +9,17 @@
 # prefix, which also keeps them separate from Foundry's `test*` / `invariant_*` functions.
 function = "check_"
 
-# Only load contracts whose name matches this regex (Halmos anchors it as ^...$). "Dvp.*Halmos" matches
-# every Halmos test (DvpEthBalanceHalmos, DvpUnboundedHalmos, ...) while still excluding the large
-# Foundry unit-test contracts under test/. NB: DvpUnboundedHalmos is intentionally unsound and emits a
-# "loop unrolling bound exceeded" WARNING, so the default `halmos` run will now show that warning.
-contract = "Dvp.*Halmos"
+# Only load contracts whose name matches this regex (Halmos anchors it as ^...$). We deliberately pin
+# this to the sound proof(s) only, so a plain `halmos` — and CI — runs exactly the properties we stand
+# behind. The two teaching artifacts remain in the repo but are EXCLUDED here because they demonstrate
+# Halmos *failure modes* rather than proving anything:
+#   - DvpUnboundedHalmos   passes but WARNS "loop unrolling bound exceeded" (unsound pass)
+#   - SolverLimitsHalmos   times out the solver (nonlinear / factorization query)
+# Run those explicitly when teaching/exploring, e.g. `halmos --contract DvpUnboundedHalmos`.
+# To add a future sound proof, GROUP the alternation so the ^...$ anchoring stays correct, e.g.
+# "(DvpEthBalanceHalmos|DvpFooHalmos)" or "Dvp(EthBalance|Foo)Halmos". A bare "A|B" anchors as
+# ^A|B$ = (^A)|(B$), which matches unintended contracts (anything ending in B) — not what you want.
+contract = "DvpEthBalanceHalmos"
 
 # Maximum number of iterations to unroll bounded loops. The ETH-only single-flow path only loops once,
 # so 4 is generous headroom; raise it if you add tests with more flows/settlements.
